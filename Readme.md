@@ -53,7 +53,7 @@ Edit the environment file with your values.
 | BIGIP2                   | 10.10.10.20             | Management IP address of BIGIP2                                                                                                                                                                                                                                         |
 | ADMIN_USERNAME           | admin                   |                                                                                                                                                                                                                                                                         |
 | ADMIN_PASSWORD           | mySecretPass            |                                                                                                                                                                                                                                                                         |
-| OUTSIDE_VLAN             | outside1_on_tenant1     | VLANSs are created at the F5OS platform later and then exposed to the BIG-IP tenant                                                                                                                                                                                     |
+| OUTSIDE_VLAN             | outside1_on_tenant1     | VLANs are created at the F5OS platform later and then exposed to the BIG-IP tenant                                                                                                                                                                                     |
 | INSIDE_VLAN              | inside1_on_tenant1      | ""                                                                                                                                                                                                                                                                      |
 | BIGIP1_INSIDE_SELF_IP    | 10.91.10.20/24          |                                                                                                                                                                                                                                                                         |
 | BIGIP1_OUTSIDE_SELF_IP   | 10.91.20.20/24          |                                                                                                                                                                                                                                                                         |
@@ -95,7 +95,7 @@ Use the token you received in the body of the response from the previous step to
 ### Step 6: BIGIP2 Cluster Onboarding
 Same as above, but for BIGIP2
 
-## IIV. Create Example Virtual Server
+## IV. Create Example Virtual Server
 
 ### Step 1: BIGIP1 Check AS3
 
