@@ -14,10 +14,10 @@ Install iControl LX extensions:
 - TS
 More info: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/installation.html
 
-Our two example BIG-IP tenants are:
+The hostnames of our two example BIG-IP tenants are:
 
-- r10900-1-tenant-1.local
-- r10900-2-tenant-1.local
+- BIGIP1 is r10900-1-tenant-1.local
+- BIGIP2 is r10900-2-tenant-1.local
 
 Create host records on each BIG-IP and provision extra management memory.
 
