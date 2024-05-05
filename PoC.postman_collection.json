@@ -1,0 +1,522 @@
+{
+	"info": {
+		"_postman_id": "657ff1bb-7d4d-4ce3-9edf-4868ad7b79a6",
+		"name": "PoC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30542238"
+	},
+	"item": [
+		{
+			"name": "Build HA Cluster",
+			"item": [
+				{
+					"name": "Step 1: BIGIP1 Check DO Version",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/declarative-onboarding/info",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2: BIGIP2 Check DO Version",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP2}}/mgmt/shared/declarative-onboarding/info",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3: BIGIP1 request X-F5-Auth-Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{ADMIN_USERNAME}}\",\r\n    \"password\": \"{{ADMIN_PASSWORD}}\",\r\n    \"loginProviderName\": \"tmos\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4: BIGIP2 request X-F5-Auth-Token Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{ADMIN_USERNAME}}\",\r\n    \"password\": \"{{ADMIN_PASSWORD}}\",\r\n    \"loginProviderName\": \"tmos\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP2}}/mgmt/shared/authn/login",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authn",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5: BIGIP1 Cluster Onboarding",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schemaVersion\": \"1.43.0\",\n    \"class\": \"Device\",\n    \"async\": true,\n    \"label\": \"my BIG-IP declaration for declarative onboarding\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"mySystem\": {\n            \"class\": \"System\",\n            \"hostname\": \"{{BIGIP1_HOSTNAME}}\",\n            \"cliInactivityTimeout\": 1200,\n            \"consoleInactivityTimeout\": 1200,\n            \"autoPhonehome\": false\n        },\n        \"myDns\": {\n            \"class\": \"DNS\",\n            \"nameServers\": [\n                \"{{DNS_NAME_SERVER}}\"\n            ]\n        },\n        \"myNtp\": {\n            \"class\": \"NTP\",\n            \"servers\": [\n                \"{{NTP_SERVER}}\"\n            ],\n            \"timezone\": \"UTC\"\n        },\n        \"guestUser\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"{{ADMIN_PASSWORD}}\",\n            \"partitionAccess\": {\n                \"Common\": {\n                    \"role\": \"guest\"\n                }\n            }\n        },\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\",\n            \"avr\": \"nominal\"\n        },\n        \"inside1-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{BIGIP1_INSIDE_SELF_IP}}\",\n            \"vlan\": \"{{INSIDE_VLAN}}\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"inside1-floating-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{INSIDE_FLOATING_SELF_IP}}\",\n            \"vlan\": \"{{INSIDE_VLAN}}\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-1\"\n        },\n        \"outside1-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{BIGIP1_OUTSIDE_SELF_IP}}\",\n            \"vlan\": \"{{OUTSIDE_VLAN}}\",\n            \"allowService\": \"none\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"outside1-floating-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{OUTSIDE_FLOATING_SELF_IP}}\",\n            \"vlan\": \"{{OUTSIDE_VLAN}}\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-1\"\n        },\n        \"configsync\": {\n            \"class\": \"ConfigSync\",\n            \"configsyncIp\": \"/Common/inside1-self-ip/address\"\n        },\n        \"failoverAddress\": {\n            \"class\": \"FailoverUnicast\",\n            \"address\": \"/Common/inside1-self-ip/address\"\n        },\n        \"failoverGroup\": {\n            \"class\": \"DeviceGroup\",\n            \"type\": \"sync-failover\",\n            \"members\": [\n                \"{{BIGIP1_HOSTNAME}}\",\n                \"{{BIGIP2_HOSTNAME}}\"\n            ],\n            \"owner\": \"/Common/failoverGroup/members/0\",\n            \"autoSync\": true,\n            \"saveOnAutoSync\": false,\n            \"networkFailover\": true,\n            \"fullLoadOnSync\": false,\n            \"asmSync\": false\n        },\n        \"traffic-group-1\": {\n            \"class\": \"TrafficGroup\",\n            \"autoFailbackEnabled\": false,\n            \"autoFailbackTime\": 50,\n            \"failoverMethod\": \"ha-order\",\n            \"haLoadFactor\": 1\n        },\n        \"trust\": {\n            \"class\": \"DeviceTrust\",\n            \"localUsername\": \"{{ADMIN_USERNAME}}\",\n            \"localPassword\": \"{{ADMIN_PASSWORD}}\",\n            \"remoteHost\": \"{{BIGIP2}}\",\n            \"remoteUsername\": \"{{ADMIN_USERNAME}}\",\n            \"remotePassword\": \"{{ADMIN_PASSWORD}}\"\n        },\n        \"dbvars\": {\n            \"class\": \"DbVariables\",\n            \"ui.advisory.enabled\": true,\n            \"ui.advisory.color\": \"green\",\n            \"ui.advisory.text\": \"{{BIGIP1_HOSTNAME}}\",\n            \"provision.restjavad.extramb\": 2048\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 6: BIGIP2 Cluster Onboarding",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schemaVersion\": \"1.43.0\",\n    \"class\": \"Device\",\n    \"async\": true,\n    \"label\": \"my BIG-IP declaration for declarative onboarding\",\n    \"Common\": {\n        \"class\": \"Tenant\",\n        \"mySystem\": {\n            \"class\": \"System\",\n            \"hostname\": \"{{BIGIP2_HOSTNAME}}\",\n            \"cliInactivityTimeout\": 1200,\n            \"consoleInactivityTimeout\": 1200,\n            \"autoPhonehome\": false\n        },\n        \"myDns\": {\n            \"class\": \"DNS\",\n            \"nameServers\": [\n                \"{{DNS_NAME_SERVER}}\"\n            ]\n        },\n        \"myNtp\": {\n            \"class\": \"NTP\",\n            \"servers\": [\n                \"{{NTP_SERVER}}\"\n            ],\n            \"timezone\": \"UTC\"\n        },\n        \"guestUser\": {\n            \"class\": \"User\",\n            \"userType\": \"regular\",\n            \"password\": \"{{ADMIN_PASSWORD}}\",\n            \"partitionAccess\": {\n                \"Common\": {\n                    \"role\": \"guest\"\n                }\n            }\n        },\n        \"myProvisioning\": {\n            \"class\": \"Provision\",\n            \"ltm\": \"nominal\"\n        },\n        \"inside1-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{BIGIP2_INSIDE_SELF_IP}}\",\n            \"vlan\": \"{{INSIDE_VLAN}}\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"inside1-floating-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{INSIDE_FLOATING_SELF_IP}}\",\n            \"vlan\": \"{{INSIDE_VLAN}}\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-1\"\n        },\n        \"outside1-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{BIGIP2_OUTSIDE_SELF_IP}}\",\n            \"vlan\": \"{{OUTSIDE_VLAN}}\",\n            \"allowService\": \"none\",\n            \"trafficGroup\": \"traffic-group-local-only\"\n        },\n        \"outside1-floating-self-ip\": {\n            \"class\": \"SelfIp\",\n            \"address\": \"{{OUTSIDE_FLOATING_SELF_IP}}\",\n            \"vlan\": \"{{OUTSIDE_VLAN}}\",\n            \"allowService\": \"default\",\n            \"trafficGroup\": \"traffic-group-1\"\n        },\n        \"configsync\": {\n            \"class\": \"ConfigSync\",\n            \"configsyncIp\": \"/Common/inside1-self-ip/address\"\n        },\n        \"failoverAddress\": {\n            \"class\": \"FailoverUnicast\",\n            \"address\": \"/Common/inside1-self-ip/address\"\n        },\n        \"failoverGroup\": {\n            \"class\": \"DeviceGroup\",\n            \"type\": \"sync-failover\",\n            \"members\": [\n                \"{{BIGIP1_HOSTNAME}}\",\n                \"{{BIGIP2_HOSTNAME}}\"\n            ],\n            \"owner\": \"/Common/failoverGroup/members/0\",\n            \"autoSync\": true,\n            \"saveOnAutoSync\": false,\n            \"networkFailover\": true,\n            \"fullLoadOnSync\": false,\n            \"asmSync\": false\n        },\n        \"traffic-group-1\": {\n            \"class\": \"TrafficGroup\",\n            \"autoFailbackEnabled\": false,\n            \"autoFailbackTime\": 50,\n            \"failoverMethod\": \"ha-order\",\n            \"haLoadFactor\": 1\n        },\n        \"trust\": {\n            \"class\": \"DeviceTrust\",\n            \"localUsername\": \"{{ADMIN_USERNAME}}\",\n            \"localPassword\": \"{{ADMIN_PASSWORD}}\",\n            \"remoteHost\": \"{{BIGIP1}}\",\n            \"remoteUsername\": \"{{ADMIN_USERNAME}}\",\n            \"remotePassword\": \"{{ADMIN_PASSWORD}}\"\n        },\n        \"dbvars\": {\n            \"class\": \"DbVariables\",\n            \"ui.advisory.enabled\": true,\n            \"ui.advisory.color\": \"green\",\n            \"ui.advisory.text\": \"{{BIGIP2_HOSTNAME}}\",\n            \"provision.restjavad.extramb\": 2048\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP2}}/mgmt/shared/declarative-onboarding",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"declarative-onboarding"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Example Virtual Server",
+			"item": []
+		},
+		{
+			"name": "Step 1: BIGIP1 Check AS3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{ADMIN_PASSWORD}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{ADMIN_USERNAME}}",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{BIGIP2}}/mgmt/shared/appsvcs/info",
+					"protocol": "https",
+					"host": [
+						"{{BIGIP2}}"
+					],
+					"path": [
+						"mgmt",
+						"shared",
+						"appsvcs",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Step 2: BIGIP2 Check AS3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{ADMIN_PASSWORD}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{ADMIN_USERNAME}}",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{BIGIP2}}/mgmt/shared/appsvcs/info",
+					"protocol": "https",
+					"host": [
+						"{{BIGIP2}}"
+					],
+					"path": [
+						"mgmt",
+						"shared",
+						"appsvcs",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Step 3: Create Example Virtual Server",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-F5-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"class\": \"AS3\",\n   \"action\": \"deploy\",\n   \"persist\": true,\n   \"declaration\": {\n      \"class\": \"ADC\",\n      \"schemaVersion\": \"3.0.0\",\n      \"id\": \"\",\n      \"label\": \"Sample 1\",\n      \"remark\": \"Simple HTTP application with RR pool\",\n      \"Sample_01\": {\n         \"class\": \"Tenant\",\n         \"A1\": {\n            \"class\": \"Application\",\n            \"service\": {\n               \"class\": \"Service_HTTP\",\n               \"virtualAddresses\": [\n                  \"10.91.20.102\"\n               ],\n               \"pool\": \"web_pool\"\n            },\n            \"web_pool\": {\n               \"class\": \"Pool\",\n               \"monitors\": [\n                  \"http\"\n               ],\n               \"members\": [{\n                  \"servicePort\": 80,\n                  \"serverAddresses\": [\n                     \"10.91.10.200\",\n                     \"10.91.10.201\"\n                  ]\n               }]\n            }\n         }\n      }\n   }\n}"
+				},
+				"url": {
+					"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+					"protocol": "https",
+					"host": [
+						"{{BIGIP1}}"
+					],
+					"path": [
+						"mgmt",
+						"shared",
+						"appsvcs",
+						"declare"
+					],
+					"query": [
+						{
+							"key": "show",
+							"value": "full"
+						}
+					]
+				},
+				"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "do_url",
+			"value": "https://github.com/F5Networks/f5-declarative-onboarding/releases/download/v1.36.0/{{do_file}}"
+		},
+		{
+			"key": "as3_url",
+			"value": "https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.43.0/{{as3_file}}"
+		},
+		{
+			"key": "cfe_url",
+			"value": "https://github.com/F5Networks/f5-cloud-failover-extension/releases/download/v1.14.0/{{cfe_file}}"
+		},
+		{
+			"key": "ts_url",
+			"value": "https://github.com/F5Networks/f5-telemetry-streaming/releases/download/v1.32.0/{{ts_file}}"
+		},
+		{
+			"key": "do_file",
+			"value": "f5-declarative-onboarding-1.36.0-4.noarch.rpm"
+		},
+		{
+			"key": "as3_file",
+			"value": "f5-appsvcs-3.43.0-2.noarch.rpm"
+		},
+		{
+			"key": "cfe_file",
+			"value": "f5-cloud-failover-1.14.0-0.noarch.rpm"
+		},
+		{
+			"key": "ts_file",
+			"value": "f5-telemetry-1.32.0-2.noarch.rpm"
+		}
+	]
+}
