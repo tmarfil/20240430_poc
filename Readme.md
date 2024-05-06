@@ -1,6 +1,6 @@
 ## I. Introduction
 
-These initial steps in Part I. Introduction can be automated at a later time for 'zero touch' provisioning.
+These initial steps in *Part I. Introduction* can be automated at a later time for 'zero touch' provisioning.
 
 Deploy two tenants on separate rSeries appliances. BIGIP1 on the first appliance and BIGIP2 on the second appliance.
 
