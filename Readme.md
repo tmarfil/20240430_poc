@@ -1,7 +1,7 @@
 ## I. Introduction
 
 >[!NOTE]
->An example of how these initial steps in *Part I. Introduction* can be automated can be provided at later time for 'zero touch' provisioning.
+>An example of how these initial steps in *Part I. Introduction* can be automated to be provided at later time for 'zero touch' provisioning.
 
 Deploy two tenants on separate rSeries appliances. BIGIP1 on the first appliance and BIGIP2 on the second appliance.
 
