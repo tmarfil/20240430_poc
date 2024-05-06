@@ -1,5 +1,7 @@
 ## I. Introduction
 
+These initial steps in Part I. Introduction can be automated at a later time for 'zero touch' provisioning.
+
 Deploy two tenants on separate rSeries appliances. BIGIP1 on the first appliance and BIGIP2 on the second appliance.
 
 Login to the Configuration Utility (WebUI) of BIGIP1.
@@ -12,6 +14,7 @@ Install iControl LX extensions:
 - AS3
 - DO
 - TS
+
 More info: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/installation.html
 
 The hostnames of our two example BIG-IP tenants are:
