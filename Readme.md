@@ -11,12 +11,10 @@ Change admin password.
 
 Change admin user's shell from 'none' to 'advanced shell'.
 
-Install iControl LX extensions:
-- AS3
-- DO
-- TS
-
-More info: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/installation.html
+[Install iControl LX extensions](https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/installation.html):
+- [AS3](https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/)
+- [DO](https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/)
+- [TS](https://clouddocs.f5.com/products/extensions/f5-telemetry-streaming/latest/)
 
 The hostnames of our two example BIG-IP tenants are:
 
