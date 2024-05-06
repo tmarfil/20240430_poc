@@ -25,7 +25,7 @@ The hostnames of our two example BIG-IP tenants are:
 
 Create host records on each BIG-IP and provision extra management memory.
 
-```
+```bash
 tmsh modify sys global-settings remote-host add { r10900-1-tenant-1.local {hostname r10900-1-tenant-1.local addr 10.10.10.10}}
 tmsh modify sys global-settings remote-host add { r10900-2-tenant-1.local {hostname r10900-2-tenant-1.local addr 10.10.10.20}}
 tmsh modify sys db provision.extramb value 2048
@@ -77,7 +77,9 @@ Edit the environment file with your values.
 
 Open an SSH terminal session to both BIGIP1 and BIGIP2. Monitor API requests for errors:
 
-`tail -f /var/log/restnoded/restnoded.log
+```bash
+tail -f /var/log/restnoded/restnoded.log
+```
 
 Run the Postman tasks in the **PoC** Collection in sequential order.
 
