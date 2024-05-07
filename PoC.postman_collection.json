@@ -304,165 +304,213 @@
 			]
 		},
 		{
-			"name": "Create Example Virtual Server",
-			"item": []
-		},
-		{
-			"name": "Step 1: BIGIP1 Check AS3",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{ADMIN_PASSWORD}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{ADMIN_USERNAME}}",
-							"type": "string"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://{{BIGIP2}}/mgmt/shared/appsvcs/info",
-					"protocol": "https",
-					"host": [
-						"{{BIGIP2}}"
-					],
-					"path": [
-						"mgmt",
-						"shared",
-						"appsvcs",
-						"info"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Step 2: BIGIP2 Check AS3",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{ADMIN_PASSWORD}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{ADMIN_USERNAME}}",
-							"type": "string"
-						},
-						{
-							"key": "showPassword",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://{{BIGIP2}}/mgmt/shared/appsvcs/info",
-					"protocol": "https",
-					"host": [
-						"{{BIGIP2}}"
-					],
-					"path": [
-						"mgmt",
-						"shared",
-						"appsvcs",
-						"info"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Step 3: Create Example Virtual Server",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+			"name": "Create Example Virtual Servers",
+			"item": [
+				{
+					"name": "Step 1: BIGIP1 Check AS3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
 					},
-					{
-						"key": "X-F5-Auth-Token",
-						"value": "",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n   \"class\": \"AS3\",\n   \"action\": \"deploy\",\n   \"persist\": true,\n   \"declaration\": {\n      \"class\": \"ADC\",\n      \"schemaVersion\": \"3.0.0\",\n      \"id\": \"\",\n      \"label\": \"Sample 1\",\n      \"remark\": \"Simple HTTP application with RR pool\",\n      \"Sample_01\": {\n         \"class\": \"Tenant\",\n         \"A1\": {\n            \"class\": \"Application\",\n            \"service\": {\n               \"class\": \"Service_HTTP\",\n               \"virtualAddresses\": [\n                  \"10.91.20.102\"\n               ],\n               \"pool\": \"web_pool\"\n            },\n            \"web_pool\": {\n               \"class\": \"Pool\",\n               \"monitors\": [\n                  \"http\"\n               ],\n               \"members\": [{\n                  \"servicePort\": 80,\n                  \"serverAddresses\": [\n                     \"10.91.10.200\",\n                     \"10.91.10.201\"\n                  ]\n               }]\n            }\n         }\n      }\n   }\n}"
-				},
-				"url": {
-					"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
-					"protocol": "https",
-					"host": [
-						"{{BIGIP1}}"
-					],
-					"path": [
-						"mgmt",
-						"shared",
-						"appsvcs",
-						"declare"
-					],
-					"query": [
-						{
-							"key": "show",
-							"value": "full"
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/info",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"info"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
-			},
-			"response": []
+				{
+					"name": "Step 2: BIGIP2 Check AS3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP2}}/mgmt/shared/appsvcs/info",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3: Create Virtual Server with iRule",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "YKXRXIKFXHPSMCQY5H7WHTBX2F",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.0.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test web server iRule\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"Shared\": {\n                \"class\": \"Application\",\n                \"template\": \"shared\",\n                \"WebServer\": {\n                    \"remark\": \"Test Web Server\",\n                    \"class\": \"iRule\",\n                    \"iRule\": {\n                        \"base64\": \"IyBpUnVsZTogICBBU0NJSSByZXNwb25zZSBmb3IgaW5jb21pbmcgSFRUUCByZXF1ZXN0cwojIFZlcnNpb246IDAuMDIgKFNTTCkKIyBEYXRlOiAgICAyMDE1LTAzLTI0CndoZW4gQ0xJRU5UX0FDQ0VQVEVEIHsKIyBnZW5lcmFsIGRlZmluaXRpb25zIChsaW5lIGJyZWFrLCBzZXJ2ZXIgaGVhZGVyLCBrZWVwLWFsaXZlIGJlaGF2aW9yKQogICAgc2V0IGxpbmVfYnJlYWsgIlxyXG4iCiAgICBzZXQgc2VydmVyX25hbWUgIkxCLU5FVCBWUyIKICAgIHNldCBjb25uX2tlZXBhbGl2ZSAiQ2xvc2UiCiAgICBzZXQgY29udGVudF90eXBlICJ0ZXh0L3BsYWluOyBjaGFyc2V0PXVzLWFzY2lpIgogICAgc2V0IGNvbHVtbl93aWR0aCAwCiMgcmVzcG9uc2UgcGFnZSBkZWZpbml0aW9uIHZpYSBpUnVsZSBjb21tYW5kcwogICAgc2V0IHBhZ2VfY2xpZW50c3NsIHsKICAgICAgICB7W1NTTDo6Y2lwaGVyIG5hbWVdfQogICAgICAgIHtbU1NMOjpjaXBoZXIgYml0c119CiAgICAgICAge1tTU0w6OmNpcGhlciB2ZXJzaW9uXX0KICAgICAgICB7W1NTTDo6c2Vzc2lvbnRpY2tldF19CiAgICAgICAge1tTU0w6OnNlc3Npb25pZF19CiAgICAgICAge1tTU0w6OmV4dGVuc2lvbnMgY291bnRdfQogICAgfQogICAgc2V0IHBhZ2VfY2xpZW50Y2VydCB7CiAgICAgICAge1tTU0w6OmNlcnQgY291bnRdfQogICAgICAgIHtbWDUwOTo6c3ViamVjdCBbU1NMOjpjZXJ0IDBdXX0KICAgICAgICB7W2ZpbmRzdHIgW1g1MDk6OnN1YmplY3QgW1NTTDo6Y2VydCAwXV0gIkNOPSIgMyAiLCJdfQogICAgICAgIHtbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dfQogICAgICAgIHtbZmluZHN0ciBbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dICJDTj0iIDMgIiwiXX0KICAgICAgICB7W1NTTDo6dmVyaWZ5X3Jlc3VsdF19CiAgICAgICAge1tYNTA5Ojp2ZXJpZnlfY2VydF9lcnJvcl9zdHJpbmcgW1NTTDo6dmVyaWZ5X3Jlc3VsdF1dfQogICAgfQogICAgc2V0IHBhZ2VfZ2xvYmFsIHsKICAgICAgICB7W3ZpcnR1YWwgbmFtZV19CiAgICAgICAge1tJUDo6bG9jYWxfYWRkcl06W1RDUDo6bG9jYWxfcG9ydF19CiAgICAgICAge1tJUDo6cmVtb3RlX2FkZHJdOltUQ1A6OnJlbW90ZV9wb3J0XX0KICAgICAgICB7W3doZXJlaXMgW0lQOjpyZW1vdGVfYWRkcl1dfQogICAgICAgIHtbSFRUUDo6aGVhZGVyIFgtRm9yd2FyZGVkLUZvcl19CiAgICAgICAge1t3aGVyZWlzIFtIVFRQOjpoZWFkZXIgWC1Gb3J3YXJkZWQtRm9yXV19CiAgICAgICAge1tIVFRQOjpoZWFkZXIgVXNlci1BZ2VudF19CiAgICAgICAge1tIVFRQOjp2ZXJzaW9uXX0KICAgICAgICB7W0hUVFA6Om1ldGhvZF19CiAgICAgICAge1tzdHJpbmcgdG9sb3dlciBbSFRUUDo6aG9zdF1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnVyaV1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnBhdGhdXX0KICAgICAgICB7W3N0cmluZyB0b2xvd2VyIFtIVFRQOjpxdWVyeV1dfQogICAgfQogICAgZm9yZWFjaCBsaW5lX2VsZW1lbnQgW2NvbmNhdCAkcGFnZV9jbGllbnRzc2wgJHBhZ2VfY2xpZW50Y2VydCAkcGFnZV9nbG9iYWxdIHsKICAgICAgICBpZiB7W3N0cmluZyBsZW5ndGggJGxpbmVfZWxlbWVudF0gPiAkY29sdW1uX3dpZHRoIH0gewogICAgICAgICAgICBzZXQgY29sdW1uX3dpZHRoIFtzdHJpbmcgbGVuZ3RoICRsaW5lX2VsZW1lbnRdCiAgICAgICAgfQogICAgfQp9CndoZW4gQ0xJRU5UU1NMX0NMSUVOVENFUlQgewojIGZsYWcgY2xpZW50IGNlcnRpZmljYXRlIHByb3ZpZGVkCiAgICBzZXQgZmxhZ19jbGllbnRjZXJ0IDEKfQp3aGVuIEhUVFBfUkVRVUVTVCB7CiMgZXZhbHVhdGUgY29tbWFuZHMgZnJvbSBsaXN0IGFuZCBidWlsZCByZXNwb25zZSBwYWdlCiAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCBbY29uY2F0ICRwYWdlX2dsb2JhbCAkcGFnZV9jbGllbnRzc2xdIHsKICAgICAgICBpZiB7W2NhdGNoIHsgZXZhbCAic2V0IGV2YWx1YXRpb24gJGxpbmVfZWxlbWVudCIgfV19IHsKICAgICAgICAgICAgbG9nIGxvY2FsMC4gIkVycm9yIGRldGVjdGVkIGZvciBjb21tYW5kIDwkbGluZV9lbGVtZW50PiIKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgJHtsaW5lX2VsZW1lbnR9ICR7ZXZhbHVhdGlvbn1dJHtsaW5lX2JyZWFrfSIKICAgICAgICB9CiAgICB9CiMgY29uZGl0aW9uYWxseSBhZGQgY2xpZW50IGNlcnRpZmljYXRlIGluZm9ybWF0aW9uCiAgICBpZiB7W2luZm8gZXhpc3RzIGZsYWdfY2xpZW50Y2VydF19IHsKICAgICAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCAkcGFnZV9jbGllbnRjZXJ0IHsKICAgICAgICAgICAgaWYge1tjYXRjaCB7IGV2YWwgInNldCBldmFsdWF0aW9uICRsaW5lX2VsZW1lbnQiIH1dfSB7CiAgICAgICAgICAgICAgICBsb2cgbG9jYWwwLiAiRXJyb3IgZGV0ZWN0ZWQgZm9yIGNvbW1hbmQgPCRsaW5lX2VsZW1lbnQ+IgogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICR7bGluZV9lbGVtZW50fSAke2V2YWx1YXRpb259XSR7bGluZV9icmVha30iCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiMgYXBwZW5kIHJhbmRvbSBudW1iZXIsIGRhdGUsIHRpbWUgYW5kIHRtbSBpbmZvCiAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgIlJhbmRvbSBOdW1iZXIiIFtmb3JtYXQgJTA0ZCBbZXhwciBpbnQocmFuZCgpKjFlNCldXV0ke2xpbmVfYnJlYWt9IgogICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICJEYXRlIC0gVGltZSIgW2Nsb2NrIGZvcm1hdCBbY2xvY2sgc2Vjb25kc10gLWZvcm1hdCB7JUEgJUIsJWQgJVkgLSAlSDolTTolUyAoJVopfV1dJHtsaW5lX2JyZWFrfSIKICAgIGFwcGVuZCBwYWdlX2FzY2lpICJbZm9ybWF0ICIlLSR7Y29sdW1uX3dpZHRofXMgJS1zIiAiVE1NIEJsYWRlL051bWJlci9Db3VudCIgIltUTU06OmNtcF9ncm91cF0vW1RNTTo6Y21wX3VuaXRdL1tUTU06OmNtcF9jb3VudF0iXSR7bGluZV9icmVha30iCiMgcmV0dXJuIHJlc3BvbnNlIHBhZ2UKICAgIEhUVFA6OnJlc3BvbmQgMjAwIGNvbnRlbnQgJHtwYWdlX2FzY2lpfSBub3NlcnZlciBTZXJ2ZXIgJHtzZXJ2ZXJfbmFtZX0gQ29ubmVjdGlvbiAke2Nvbm5fa2VlcGFsaXZlfSBDb250ZW50LVR5cGUgJGNvbnRlbnRfdHlwZQp9Cg==\"\n                    }\n                }\n            }\n        },\n        \"Tenant_Acme_1\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_1\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_1\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"iRules\": [\"/Common/Shared/WebServer\"],\n                    \"virtualAddresses\": [\n                        \"10.91.20.101\"\n                    ],\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "show",
+									"value": "full"
+								}
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4: Create Virtual Server with Pool Members",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "YKXRXIKFXHPSMCQY5H7WHTBX2F",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.0.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"Shared\": {\n                \"class\": \"Application\",\n                \"template\": \"shared\"\n            }\n        },\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							],
+							"query": [
+								{
+									"key": "show",
+									"value": "full"
+								}
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
