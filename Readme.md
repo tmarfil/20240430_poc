@@ -37,17 +37,17 @@ Repeat the steps above on BIGIP2.
 
 ## II. Postman
 
-Download the Postman collection and Environment file.
+Import the Postman collection and environment files _directly_ from the links below into Postman.
 
 Postman collection:
-[https://github.com/tmarfil/20240430_poc/blob/main/PoC.postman_collection.json](https://raw.githubusercontent.com/tmarfil/20240430_poc/main/PoC.postman_collection.json)
-
+```
+https://raw.githubusercontent.com/tmarfil/20240430_poc/main/PoC.postman_collection.json
+```
 Environment file:
-[https://github.com/tmarfil/20240430_poc/blob/main/Env1.postman_environment.json](https://raw.githubusercontent.com/tmarfil/20240430_poc/main/Env1.postman_environment.json)
-
-Import the Postman collection and environment file.
-
-Edit the environment file with your values.
+```
+https://raw.githubusercontent.com/tmarfil/20240430_poc/main/Env1.postman_environment.json
+```
+Edit the environment file with _your_ values. The values below are just an example.
 
 | key                      | value                   | notes                                                                                                                                                                                                                                                                   |
 | ------------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
