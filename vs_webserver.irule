@@ -1,0 +1,79 @@
+# iRule:   ASCII response for incoming HTTP requests
+# Version: 0.02 (SSL)
+# Date:    2015-03-24
+when CLIENT_ACCEPTED {
+# general definitions (line break, server header, keep-alive behavior)
+    set line_break "\r\n"
+    set server_name "LB-NET VS"
+    set conn_keepalive "Close"
+    set content_type "text/plain; charset=us-ascii"
+    set column_width 0
+# response page definition via iRule commands
+    set page_clientssl {
+        {[SSL::cipher name]}
+        {[SSL::cipher bits]}
+        {[SSL::cipher version]}
+        {[SSL::sessionticket]}
+        {[SSL::sessionid]}
+        {[SSL::extensions count]}
+    }
+    set page_clientcert {
+        {[SSL::cert count]}
+        {[X509::subject [SSL::cert 0]]}
+        {[findstr [X509::subject [SSL::cert 0]] "CN=" 3 ","]}
+        {[X509::issuer [SSL::cert 0]]}
+        {[findstr [X509::issuer [SSL::cert 0]] "CN=" 3 ","]}
+        {[SSL::verify_result]}
+        {[X509::verify_cert_error_string [SSL::verify_result]]}
+    }
+    set page_global {
+        {[virtual name]}
+        {[IP::local_addr]:[TCP::local_port]}
+        {[IP::remote_addr]:[TCP::remote_port]}
+        {[whereis [IP::remote_addr]]}
+        {[HTTP::header X-Forwarded-For]}
+        {[whereis [HTTP::header X-Forwarded-For]]}
+        {[HTTP::header User-Agent]}
+        {[HTTP::version]}
+        {[HTTP::method]}
+        {[string tolower [HTTP::host]]}
+        {[string tolower [HTTP::uri]]}
+        {[string tolower [HTTP::path]]}
+        {[string tolower [HTTP::query]]}
+    }
+    foreach line_element [concat $page_clientssl $page_clientcert $page_global] {
+        if {[string length $line_element] > $column_width } {
+            set column_width [string length $line_element]
+        }
+    }
+}
+when CLIENTSSL_CLIENTCERT {
+# flag client certificate provided
+    set flag_clientcert 1
+}
+when HTTP_REQUEST {
+# evaluate commands from list and build response page
+    foreach line_element [concat $page_global $page_clientssl] {
+        if {[catch { eval "set evaluation $line_element" }]} {
+            log local0. "Error detected for command <$line_element>"
+        } else {
+            append page_ascii "[format "%-${column_width}s %-s" ${line_element} ${evaluation}]${line_break}"
+        }
+    }
+# conditionally add client certificate information
+    if {[info exists flag_clientcert]} {
+        foreach line_element $page_clientcert {
+            if {[catch { eval "set evaluation $line_element" }]} {
+                log local0. "Error detected for command <$line_element>"
+            } else {
+                append page_ascii "[format "%-${column_width}s %-s" ${line_element} ${evaluation}]${line_break}"
+            }
+        }
+    }
+# append random number, date, time and tmm info
+    append page_ascii "[format "%-${column_width}s %-s" "Random Number" [format %04d [expr int(rand()*1e4)]]]${line_break}"
+    append page_ascii "[format "%-${column_width}s %-s" "Date - Time" [clock format [clock seconds] -format {%A %B,%d %Y - %H:%M:%S (%Z)}]]${line_break}"
+    append page_ascii "[format "%-${column_width}s %-s" "TMM Blade/Number/Count" "[TMM::cmp_group]/[TMM::cmp_unit]/[TMM::cmp_count]"]${line_break}"
+# return response page
+    HTTP::respond 200 content ${page_ascii} noserver Server ${server_name} Connection ${conn_keepalive} Content-Type $content_type
+}
