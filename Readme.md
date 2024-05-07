@@ -90,16 +90,16 @@ This step uses basic authentication to verify the Declarative Onboarding (DO) AP
 Same as previous step, but for BIGIP2.
 
 ### Step 3: BIGIP1 request X-F5-Auth-Token
-This step uses basic authentication to request a token. You can then use this token value inside of the 'X-F5-Auth-Token' header for subsequent API requests. More info: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/authentication.html
+Toggle the HTTP method to `POST`. This step uses basic authentication to request a token. You can then use this token value inside of the 'X-F5-Auth-Token' header for subsequent API requests. More info: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/authentication.html
 
 ### Step 4: BIGIP2 request X-F5-Auth-Token Copy
-Same as previous step, but for BIGIP2.
+Toggle the HTTP method to `POST`. Same as previous step, but for BIGIP2.
 
 ### Step 5: BIGIP1 Cluster Onboarding
-Use the token you received in the body of the response from the previous step to provide a value for the X-F5-Auth-Token header. You will fail authentication otherwise. You can POST Step 5 and Step 6 one right after the other. After POSTing, you can toggle the method from POST to GET and track the status of the API task until you receive a status code 200 (success) or work through any errors.
+Toggle the HTTP method to `POST`. Use the token you received in the body of the response from the previous step to provide a value for the X-F5-Auth-Token header. You will fail authentication otherwise. You can POST Step 5 and Step 6 one right after the other. After POSTing, you can toggle the method from POST to GET and track the status of the API task until you receive a status code 200 (success) or work through any errors.
 
 ### Step 6: BIGIP2 Cluster Onboarding
-Same as above, but for BIGIP2
+Toggle the HTTP method to `POST`. Same as above, but for BIGIP2
 
 ## IV. Create Example Virtual Server
 
