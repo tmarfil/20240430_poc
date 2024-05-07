@@ -105,5 +105,9 @@ Same as above, but for BIGIP2
 
 ### Step 2: BIGIP2 Check AS3
 
-### Step 3: Create Example Virtual Server
+### Step 3: Create Virtual Server with iRule
+When creating a Virtual Server, you only need to POST an AS3 declaration to one of the devices in the HA cluster, and the HA config sync will sync the configuration changes automatically.
 
+This example creates a Virtual Server using the default 'clientssl' TLS profile and responds to HTTPS requests via the 'WebServer' iRule.
+
+### Step 4: Step 4: Create Virtual Server with Pool Members
