@@ -237,7 +237,7 @@
 							},
 							{
 								"key": "X-F5-Auth-Token",
-								"value": "",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}",
 								"type": "text"
 							}
 						],
@@ -278,7 +278,7 @@
 							},
 							{
 								"key": "X-F5-Auth-Token",
-								"value": "",
+								"value": "{{BIGIP2-X-F5-Auth-Token}}",
 								"type": "text"
 							}
 						],
@@ -432,7 +432,7 @@
 							},
 							{
 								"key": "X-F5-Auth-Token",
-								"value": "YKXRXIKFXHPSMCQY5H7WHTBX2F",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}",
 								"type": "text"
 							}
 						],
@@ -479,7 +479,7 @@
 							},
 							{
 								"key": "X-F5-Auth-Token",
-								"value": "YKXRXIKFXHPSMCQY5H7WHTBX2F",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}",
 								"type": "text"
 							}
 						],
