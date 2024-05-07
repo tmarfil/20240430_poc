@@ -532,39 +532,5 @@
 				]
 			}
 		}
-	],
-	"variable": [
-		{
-			"key": "do_url",
-			"value": "https://github.com/F5Networks/f5-declarative-onboarding/releases/download/v1.36.0/{{do_file}}"
-		},
-		{
-			"key": "as3_url",
-			"value": "https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.43.0/{{as3_file}}"
-		},
-		{
-			"key": "cfe_url",
-			"value": "https://github.com/F5Networks/f5-cloud-failover-extension/releases/download/v1.14.0/{{cfe_file}}"
-		},
-		{
-			"key": "ts_url",
-			"value": "https://github.com/F5Networks/f5-telemetry-streaming/releases/download/v1.32.0/{{ts_file}}"
-		},
-		{
-			"key": "do_file",
-			"value": "f5-declarative-onboarding-1.36.0-4.noarch.rpm"
-		},
-		{
-			"key": "as3_file",
-			"value": "f5-appsvcs-3.43.0-2.noarch.rpm"
-		},
-		{
-			"key": "cfe_file",
-			"value": "f5-cloud-failover-1.14.0-0.noarch.rpm"
-		},
-		{
-			"key": "ts_file",
-			"value": "f5-telemetry-1.32.0-2.noarch.rpm"
-		}
 	]
 }
