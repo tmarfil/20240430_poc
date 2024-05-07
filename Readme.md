@@ -37,6 +37,8 @@ Repeat the steps above on BIGIP2.
 
 ## II. Postman
 
+Disable `SSL certificate verification` in settings.
+
 Import the Postman collection and environment files _directly_ from the links below into Postman.
 
 Postman collection:
