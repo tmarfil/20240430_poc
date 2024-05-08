@@ -45,7 +45,7 @@ Postman collection:
 ```
 https://raw.githubusercontent.com/tmarfil/20240430_poc/main/PoC.postman_collection.json
 ```
-Postman Environment:
+Postman environment:
 ```
 https://raw.githubusercontent.com/tmarfil/20240430_poc/main/Env1.postman_environment.json
 ```
