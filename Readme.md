@@ -45,11 +45,11 @@ Postman collection:
 ```
 https://raw.githubusercontent.com/tmarfil/20240430_poc/main/PoC.postman_collection.json
 ```
-Environment file:
+Postman Environment:
 ```
 https://raw.githubusercontent.com/tmarfil/20240430_poc/main/Env1.postman_environment.json
 ```
-Edit the environment file with _your_ values. The values below are just an example.
+Edit the environment with _your_ values. The values below are just an example.
 
 | key                      | value                   | notes                                                                                                                                                                                                                                                                   |
 | ------------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
