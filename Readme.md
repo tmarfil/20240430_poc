@@ -113,3 +113,19 @@ When creating a Virtual Server, you only need to POST an AS3 declaration to one 
 This example creates a Virtual Server using the default 'clientssl' TLS profile and responds to HTTPS requests via the 'WebServer' iRule.
 
 ### Step 4: Step 4: Create Virtual Server with Pool Members
+
+### Step 5: Import TLS certificate
+Create a tls certificate.crt and private.key.
+
+```bash
+openssl req -x509 -newkey rsa:2048 -nodes -keyout private.key -out certificate.crt -days 365 -sha256 -subj "/CN=yourdomain.com" -addext "subjectAltName=DNS:yourdomain.com" -addext "basicConstraints=critical,CA:FALSE" -addext "keyUsage=digitalSignature,keyEncipherment" -addext "extendedKeyUsage=serverAuth" -addext "tlsfeature=status_request"
+ ```
+
+Upload tls certificate.crd and private.key using the `f5-tls-files-upload.sh` Bash script.
+
+```bash
+f5-tls-files-upload.sh --cert 'certificate.crt' --key 'private.key' --auth-token 'XXXXXXXXXXXXXXXXXXXXXXXXXX' --host r10900-1-tenant-1
+```
+
+### Step 8: Create a Virtual Server with custom SSL Profile
+
