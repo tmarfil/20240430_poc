@@ -420,7 +420,7 @@
 							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test web server iRule\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"Shared\": {\n                \"class\": \"Application\",\n                \"template\": \"shared\",\n                \"WebServer\": {\n                    \"remark\": \"Test Web Server\",\n                    \"class\": \"iRule\",\n                    \"iRule\": {\n                        \"base64\": \"IyBpUnVsZTogICBBU0NJSSByZXNwb25zZSBmb3IgaW5jb21pbmcgSFRUUCByZXF1ZXN0cwojIFZlcnNpb246IDAuMDIgKFNTTCkKIyBEYXRlOiAgICAyMDE1LTAzLTI0CndoZW4gQ0xJRU5UX0FDQ0VQVEVEIHsKIyBnZW5lcmFsIGRlZmluaXRpb25zIChsaW5lIGJyZWFrLCBzZXJ2ZXIgaGVhZGVyLCBrZWVwLWFsaXZlIGJlaGF2aW9yKQogICAgc2V0IGxpbmVfYnJlYWsgIlxyXG4iCiAgICBzZXQgc2VydmVyX25hbWUgIkxCLU5FVCBWUyIKICAgIHNldCBjb25uX2tlZXBhbGl2ZSAiQ2xvc2UiCiAgICBzZXQgY29udGVudF90eXBlICJ0ZXh0L3BsYWluOyBjaGFyc2V0PXVzLWFzY2lpIgogICAgc2V0IGNvbHVtbl93aWR0aCAwCiMgcmVzcG9uc2UgcGFnZSBkZWZpbml0aW9uIHZpYSBpUnVsZSBjb21tYW5kcwogICAgc2V0IHBhZ2VfY2xpZW50c3NsIHsKICAgICAgICB7W1NTTDo6Y2lwaGVyIG5hbWVdfQogICAgICAgIHtbU1NMOjpjaXBoZXIgYml0c119CiAgICAgICAge1tTU0w6OmNpcGhlciB2ZXJzaW9uXX0KICAgICAgICB7W1NTTDo6c2Vzc2lvbnRpY2tldF19CiAgICAgICAge1tTU0w6OnNlc3Npb25pZF19CiAgICAgICAge1tTU0w6OmV4dGVuc2lvbnMgY291bnRdfQogICAgfQogICAgc2V0IHBhZ2VfY2xpZW50Y2VydCB7CiAgICAgICAge1tTU0w6OmNlcnQgY291bnRdfQogICAgICAgIHtbWDUwOTo6c3ViamVjdCBbU1NMOjpjZXJ0IDBdXX0KICAgICAgICB7W2ZpbmRzdHIgW1g1MDk6OnN1YmplY3QgW1NTTDo6Y2VydCAwXV0gIkNOPSIgMyAiLCJdfQogICAgICAgIHtbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dfQogICAgICAgIHtbZmluZHN0ciBbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dICJDTj0iIDMgIiwiXX0KICAgICAgICB7W1NTTDo6dmVyaWZ5X3Jlc3VsdF19CiAgICAgICAge1tYNTA5Ojp2ZXJpZnlfY2VydF9lcnJvcl9zdHJpbmcgW1NTTDo6dmVyaWZ5X3Jlc3VsdF1dfQogICAgfQogICAgc2V0IHBhZ2VfZ2xvYmFsIHsKICAgICAgICB7W3ZpcnR1YWwgbmFtZV19CiAgICAgICAge1tJUDo6bG9jYWxfYWRkcl06W1RDUDo6bG9jYWxfcG9ydF19CiAgICAgICAge1tJUDo6cmVtb3RlX2FkZHJdOltUQ1A6OnJlbW90ZV9wb3J0XX0KICAgICAgICB7W3doZXJlaXMgW0lQOjpyZW1vdGVfYWRkcl1dfQogICAgICAgIHtbSFRUUDo6aGVhZGVyIFgtRm9yd2FyZGVkLUZvcl19CiAgICAgICAge1t3aGVyZWlzIFtIVFRQOjpoZWFkZXIgWC1Gb3J3YXJkZWQtRm9yXV19CiAgICAgICAge1tIVFRQOjpoZWFkZXIgVXNlci1BZ2VudF19CiAgICAgICAge1tIVFRQOjp2ZXJzaW9uXX0KICAgICAgICB7W0hUVFA6Om1ldGhvZF19CiAgICAgICAge1tzdHJpbmcgdG9sb3dlciBbSFRUUDo6aG9zdF1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnVyaV1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnBhdGhdXX0KICAgICAgICB7W3N0cmluZyB0b2xvd2VyIFtIVFRQOjpxdWVyeV1dfQogICAgfQogICAgZm9yZWFjaCBsaW5lX2VsZW1lbnQgW2NvbmNhdCAkcGFnZV9jbGllbnRzc2wgJHBhZ2VfY2xpZW50Y2VydCAkcGFnZV9nbG9iYWxdIHsKICAgICAgICBpZiB7W3N0cmluZyBsZW5ndGggJGxpbmVfZWxlbWVudF0gPiAkY29sdW1uX3dpZHRoIH0gewogICAgICAgICAgICBzZXQgY29sdW1uX3dpZHRoIFtzdHJpbmcgbGVuZ3RoICRsaW5lX2VsZW1lbnRdCiAgICAgICAgfQogICAgfQp9CndoZW4gQ0xJRU5UU1NMX0NMSUVOVENFUlQgewojIGZsYWcgY2xpZW50IGNlcnRpZmljYXRlIHByb3ZpZGVkCiAgICBzZXQgZmxhZ19jbGllbnRjZXJ0IDEKfQp3aGVuIEhUVFBfUkVRVUVTVCB7CiMgZXZhbHVhdGUgY29tbWFuZHMgZnJvbSBsaXN0IGFuZCBidWlsZCByZXNwb25zZSBwYWdlCiAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCBbY29uY2F0ICRwYWdlX2dsb2JhbCAkcGFnZV9jbGllbnRzc2xdIHsKICAgICAgICBpZiB7W2NhdGNoIHsgZXZhbCAic2V0IGV2YWx1YXRpb24gJGxpbmVfZWxlbWVudCIgfV19IHsKICAgICAgICAgICAgbG9nIGxvY2FsMC4gIkVycm9yIGRldGVjdGVkIGZvciBjb21tYW5kIDwkbGluZV9lbGVtZW50PiIKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgJHtsaW5lX2VsZW1lbnR9ICR7ZXZhbHVhdGlvbn1dJHtsaW5lX2JyZWFrfSIKICAgICAgICB9CiAgICB9CiMgY29uZGl0aW9uYWxseSBhZGQgY2xpZW50IGNlcnRpZmljYXRlIGluZm9ybWF0aW9uCiAgICBpZiB7W2luZm8gZXhpc3RzIGZsYWdfY2xpZW50Y2VydF19IHsKICAgICAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCAkcGFnZV9jbGllbnRjZXJ0IHsKICAgICAgICAgICAgaWYge1tjYXRjaCB7IGV2YWwgInNldCBldmFsdWF0aW9uICRsaW5lX2VsZW1lbnQiIH1dfSB7CiAgICAgICAgICAgICAgICBsb2cgbG9jYWwwLiAiRXJyb3IgZGV0ZWN0ZWQgZm9yIGNvbW1hbmQgPCRsaW5lX2VsZW1lbnQ+IgogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICR7bGluZV9lbGVtZW50fSAke2V2YWx1YXRpb259XSR7bGluZV9icmVha30iCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiMgYXBwZW5kIHJhbmRvbSBudW1iZXIsIGRhdGUsIHRpbWUgYW5kIHRtbSBpbmZvCiAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgIlJhbmRvbSBOdW1iZXIiIFtmb3JtYXQgJTA0ZCBbZXhwciBpbnQocmFuZCgpKjFlNCldXV0ke2xpbmVfYnJlYWt9IgogICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICJEYXRlIC0gVGltZSIgW2Nsb2NrIGZvcm1hdCBbY2xvY2sgc2Vjb25kc10gLWZvcm1hdCB7JUEgJUIsJWQgJVkgLSAlSDolTTolUyAoJVopfV1dJHtsaW5lX2JyZWFrfSIKICAgIGFwcGVuZCBwYWdlX2FzY2lpICJbZm9ybWF0ICIlLSR7Y29sdW1uX3dpZHRofXMgJS1zIiAiVE1NIEJsYWRlL051bWJlci9Db3VudCIgIltUTU06OmNtcF9ncm91cF0vW1RNTTo6Y21wX3VuaXRdL1tUTU06OmNtcF9jb3VudF0iXSR7bGluZV9icmVha30iCiMgcmV0dXJuIHJlc3BvbnNlIHBhZ2UKICAgIEhUVFA6OnJlc3BvbmQgMjAwIGNvbnRlbnQgJHtwYWdlX2FzY2lpfSBub3NlcnZlciBTZXJ2ZXIgJHtzZXJ2ZXJfbmFtZX0gQ29ubmVjdGlvbiAke2Nvbm5fa2VlcGFsaXZlfSBDb250ZW50LVR5cGUgJGNvbnRlbnRfdHlwZQp9Cg==\"\n                    }\n                }\n            }\n        },\n        \"Tenant_Acme_1\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_1\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_1\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"iRules\": [\"/Common/Shared/WebServer\"],\n                    \"virtualAddresses\": [\n                        \"10.91.20.101\"\n                    ],\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                }\n            }\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
 							"protocol": "https",
 							"host": [
 								"{{BIGIP1}}"
@@ -430,12 +430,45 @@
 								"shared",
 								"appsvcs",
 								"declare"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "OPTIONAL: Delete Tenant Example",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare/<Tenant_Name>",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
 							],
-							"query": [
-								{
-									"key": "show",
-									"value": "full"
-								}
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare",
+								"<Tenant_Name>"
 							]
 						},
 						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
@@ -464,7 +497,7 @@
 							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
 							"protocol": "https",
 							"host": [
 								"{{BIGIP1}}"
@@ -474,12 +507,44 @@
 								"shared",
 								"appsvcs",
 								"declare"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: To Do: Enable and disable pool members",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
 							],
-							"query": [
-								{
-									"key": "show",
-									"value": "full"
-								}
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
 							]
 						},
 						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
@@ -596,7 +661,7 @@
 							"raw": "{\n  \"class\": \"AS3\",\n  \"action\": \"deploy\",\n  \"persist\": true,\n  \"declaration\": {\n    \"class\": \"ADC\",\n    \"schemaVersion\": \"3.53.0\",\n    \"id\": \"ssl_profile_declaration\",\n    \"Tenant_Acme_3\": {\n      \"class\": \"Tenant\",\n      \"Application1\": {\n        \"class\": \"Application\",\n        \"template\": \"generic\",\n        \"customSSLProfile\": {\n          \"class\": \"TLS_Server\",\n          \"certificates\": [{\n            \"certificate\": \"customCert\"\n          }]\n        },\n        \"customCert\": {\n          \"class\": \"Certificate\",\n          \"certificate\": {\n            \"bigip\": \"/Common/certificate.crt\"\n          },\n          \"privateKey\": {\n            \"bigip\": \"/Common/private.key\"\n          }\n        }\n      }\n    }\n  }\n}\n"
 						},
 						"url": {
-							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
 							"protocol": "https",
 							"host": [
 								"{{BIGIP1}}"
@@ -606,12 +671,6 @@
 								"shared",
 								"appsvcs",
 								"declare"
-							],
-							"query": [
-								{
-									"key": "show",
-									"value": "full"
-								}
 							]
 						},
 						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
@@ -640,7 +699,7 @@
 							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test web server iRule\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"Shared\": {\n                \"class\": \"Application\",\n                \"template\": \"shared\",\n                \"WebServer\": {\n                    \"remark\": \"Test Web Server\",\n                    \"class\": \"iRule\",\n                    \"iRule\": {\n                        \"base64\": \"IyBpUnVsZTogICBBU0NJSSByZXNwb25zZSBmb3IgaW5jb21pbmcgSFRUUCByZXF1ZXN0cwojIFZlcnNpb246IDAuMDIgKFNTTCkKIyBEYXRlOiAgICAyMDE1LTAzLTI0CndoZW4gQ0xJRU5UX0FDQ0VQVEVEIHsKIyBnZW5lcmFsIGRlZmluaXRpb25zIChsaW5lIGJyZWFrLCBzZXJ2ZXIgaGVhZGVyLCBrZWVwLWFsaXZlIGJlaGF2aW9yKQogICAgc2V0IGxpbmVfYnJlYWsgIlxyXG4iCiAgICBzZXQgc2VydmVyX25hbWUgIkxCLU5FVCBWUyIKICAgIHNldCBjb25uX2tlZXBhbGl2ZSAiQ2xvc2UiCiAgICBzZXQgY29udGVudF90eXBlICJ0ZXh0L3BsYWluOyBjaGFyc2V0PXVzLWFzY2lpIgogICAgc2V0IGNvbHVtbl93aWR0aCAwCiMgcmVzcG9uc2UgcGFnZSBkZWZpbml0aW9uIHZpYSBpUnVsZSBjb21tYW5kcwogICAgc2V0IHBhZ2VfY2xpZW50c3NsIHsKICAgICAgICB7W1NTTDo6Y2lwaGVyIG5hbWVdfQogICAgICAgIHtbU1NMOjpjaXBoZXIgYml0c119CiAgICAgICAge1tTU0w6OmNpcGhlciB2ZXJzaW9uXX0KICAgICAgICB7W1NTTDo6c2Vzc2lvbnRpY2tldF19CiAgICAgICAge1tTU0w6OnNlc3Npb25pZF19CiAgICAgICAge1tTU0w6OmV4dGVuc2lvbnMgY291bnRdfQogICAgfQogICAgc2V0IHBhZ2VfY2xpZW50Y2VydCB7CiAgICAgICAge1tTU0w6OmNlcnQgY291bnRdfQogICAgICAgIHtbWDUwOTo6c3ViamVjdCBbU1NMOjpjZXJ0IDBdXX0KICAgICAgICB7W2ZpbmRzdHIgW1g1MDk6OnN1YmplY3QgW1NTTDo6Y2VydCAwXV0gIkNOPSIgMyAiLCJdfQogICAgICAgIHtbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dfQogICAgICAgIHtbZmluZHN0ciBbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dICJDTj0iIDMgIiwiXX0KICAgICAgICB7W1NTTDo6dmVyaWZ5X3Jlc3VsdF19CiAgICAgICAge1tYNTA5Ojp2ZXJpZnlfY2VydF9lcnJvcl9zdHJpbmcgW1NTTDo6dmVyaWZ5X3Jlc3VsdF1dfQogICAgfQogICAgc2V0IHBhZ2VfZ2xvYmFsIHsKICAgICAgICB7W3ZpcnR1YWwgbmFtZV19CiAgICAgICAge1tJUDo6bG9jYWxfYWRkcl06W1RDUDo6bG9jYWxfcG9ydF19CiAgICAgICAge1tJUDo6cmVtb3RlX2FkZHJdOltUQ1A6OnJlbW90ZV9wb3J0XX0KICAgICAgICB7W3doZXJlaXMgW0lQOjpyZW1vdGVfYWRkcl1dfQogICAgICAgIHtbSFRUUDo6aGVhZGVyIFgtRm9yd2FyZGVkLUZvcl19CiAgICAgICAge1t3aGVyZWlzIFtIVFRQOjpoZWFkZXIgWC1Gb3J3YXJkZWQtRm9yXV19CiAgICAgICAge1tIVFRQOjpoZWFkZXIgVXNlci1BZ2VudF19CiAgICAgICAge1tIVFRQOjp2ZXJzaW9uXX0KICAgICAgICB7W0hUVFA6Om1ldGhvZF19CiAgICAgICAge1tzdHJpbmcgdG9sb3dlciBbSFRUUDo6aG9zdF1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnVyaV1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnBhdGhdXX0KICAgICAgICB7W3N0cmluZyB0b2xvd2VyIFtIVFRQOjpxdWVyeV1dfQogICAgfQogICAgZm9yZWFjaCBsaW5lX2VsZW1lbnQgW2NvbmNhdCAkcGFnZV9jbGllbnRzc2wgJHBhZ2VfY2xpZW50Y2VydCAkcGFnZV9nbG9iYWxdIHsKICAgICAgICBpZiB7W3N0cmluZyBsZW5ndGggJGxpbmVfZWxlbWVudF0gPiAkY29sdW1uX3dpZHRoIH0gewogICAgICAgICAgICBzZXQgY29sdW1uX3dpZHRoIFtzdHJpbmcgbGVuZ3RoICRsaW5lX2VsZW1lbnRdCiAgICAgICAgfQogICAgfQp9CndoZW4gQ0xJRU5UU1NMX0NMSUVOVENFUlQgewojIGZsYWcgY2xpZW50IGNlcnRpZmljYXRlIHByb3ZpZGVkCiAgICBzZXQgZmxhZ19jbGllbnRjZXJ0IDEKfQp3aGVuIEhUVFBfUkVRVUVTVCB7CiMgZXZhbHVhdGUgY29tbWFuZHMgZnJvbSBsaXN0IGFuZCBidWlsZCByZXNwb25zZSBwYWdlCiAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCBbY29uY2F0ICRwYWdlX2dsb2JhbCAkcGFnZV9jbGllbnRzc2xdIHsKICAgICAgICBpZiB7W2NhdGNoIHsgZXZhbCAic2V0IGV2YWx1YXRpb24gJGxpbmVfZWxlbWVudCIgfV19IHsKICAgICAgICAgICAgbG9nIGxvY2FsMC4gIkVycm9yIGRldGVjdGVkIGZvciBjb21tYW5kIDwkbGluZV9lbGVtZW50PiIKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgJHtsaW5lX2VsZW1lbnR9ICR7ZXZhbHVhdGlvbn1dJHtsaW5lX2JyZWFrfSIKICAgICAgICB9CiAgICB9CiMgY29uZGl0aW9uYWxseSBhZGQgY2xpZW50IGNlcnRpZmljYXRlIGluZm9ybWF0aW9uCiAgICBpZiB7W2luZm8gZXhpc3RzIGZsYWdfY2xpZW50Y2VydF19IHsKICAgICAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCAkcGFnZV9jbGllbnRjZXJ0IHsKICAgICAgICAgICAgaWYge1tjYXRjaCB7IGV2YWwgInNldCBldmFsdWF0aW9uICRsaW5lX2VsZW1lbnQiIH1dfSB7CiAgICAgICAgICAgICAgICBsb2cgbG9jYWwwLiAiRXJyb3IgZGV0ZWN0ZWQgZm9yIGNvbW1hbmQgPCRsaW5lX2VsZW1lbnQ+IgogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICR7bGluZV9lbGVtZW50fSAke2V2YWx1YXRpb259XSR7bGluZV9icmVha30iCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiMgYXBwZW5kIHJhbmRvbSBudW1iZXIsIGRhdGUsIHRpbWUgYW5kIHRtbSBpbmZvCiAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgIlJhbmRvbSBOdW1iZXIiIFtmb3JtYXQgJTA0ZCBbZXhwciBpbnQocmFuZCgpKjFlNCldXV0ke2xpbmVfYnJlYWt9IgogICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICJEYXRlIC0gVGltZSIgW2Nsb2NrIGZvcm1hdCBbY2xvY2sgc2Vjb25kc10gLWZvcm1hdCB7JUEgJUIsJWQgJVkgLSAlSDolTTolUyAoJVopfV1dJHtsaW5lX2JyZWFrfSIKICAgIGFwcGVuZCBwYWdlX2FzY2lpICJbZm9ybWF0ICIlLSR7Y29sdW1uX3dpZHRofXMgJS1zIiAiVE1NIEJsYWRlL051bWJlci9Db3VudCIgIltUTU06OmNtcF9ncm91cF0vW1RNTTo6Y21wX3VuaXRdL1tUTU06OmNtcF9jb3VudF0iXSR7bGluZV9icmVha30iCiMgcmV0dXJuIHJlc3BvbnNlIHBhZ2UKICAgIEhUVFA6OnJlc3BvbmQgMjAwIGNvbnRlbnQgJHtwYWdlX2FzY2lpfSBub3NlcnZlciBTZXJ2ZXIgJHtzZXJ2ZXJfbmFtZX0gQ29ubmVjdGlvbiAke2Nvbm5fa2VlcGFsaXZlfSBDb250ZW50LVR5cGUgJGNvbnRlbnRfdHlwZQp9Cg==\"\n                    }\n                }\n            }\n        },\n        \"Tenant_Acme_3\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_1\": {\n                \"class\": \"Application\",\n                \"template\": \"generic\",\n                \"customSSLProfile\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"customCert\"\n                        }\n                    ]\n                },\n                \"customCert\": {\n                    \"class\": \"Certificate\",\n                    \"certificate\": {\n                        \"bigip\": \"/Common/certificate.crt\"\n                    },\n                    \"privateKey\": {\n                        \"bigip\": \"/Common/private.key\"\n                    }\n                },\n                \"acme_https_vs_1\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"iRules\": [\n                        \"/Common/Shared/WebServer\"\n                    ],\n                    \"virtualAddresses\": [\n                        \"10.91.20.103\"\n                    ],\n                    \"serverTLS\": \"customSSLProfile\"\n                }\n            }\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare?show=full",
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
 							"protocol": "https",
 							"host": [
 								"{{BIGIP1}}"
@@ -650,12 +709,165 @@
 								"shared",
 								"appsvcs",
 								"declare"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step 9: Create Virtual Server from FAST template",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"examples/simple_http\",\n    \"parameters\": {\n        \"tenant_name\": \"Tenant_Acme_4\",\n        \"application_name\": \"myapp1\",\n        \"virtual_port\": 443,\n        \"virtual_address\": \"10.91.20.104\",\n        \"server_port\": 443,\n        \"server_addresses\": [\n            \"192.168.50.50\"\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/fast/applications",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
 							],
-							"query": [
-								{
-									"key": "show",
-									"value": "full"
-								}
+							"path": [
+								"mgmt",
+								"shared",
+								"fast",
+								"applications"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "OPTIONAL: Get FAST template application",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"examples/simple_http\",\n    \"parameters\": {\n        \"tenant_name\": \"Tenant_Acme_4\",\n        \"application_name\": \"myapp1\",\n        \"virtual_port\": 443,\n        \"virtual_address\": \"10.91.20.104\",\n        \"server_port\": 443,\n        \"server_addresses\": [\n            \"192.168.50.50\"\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/fast/applications/Tenant_Acme_4/myapp1",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"fast",
+								"applications",
+								"Tenant_Acme_4",
+								"myapp1"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "OPTIONAL: Delete FAST template application",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"examples/simple_http\",\n    \"parameters\": {\n        \"tenant_name\": \"Tenant_Acme_4\",\n        \"application_name\": \"myapp1\",\n        \"virtual_port\": 443,\n        \"virtual_address\": \"10.91.20.104\",\n        \"server_port\": 443,\n        \"server_addresses\": [\n            \"192.168.50.50\"\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/fast/applications/Tenant_Acme_4/myapp1",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"fast",
+								"applications",
+								"Tenant_Acme_4",
+								"myapp1"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step 10: Get all Virtual Servers (toggle GET and POST to prove idempotency)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test web server iRule\",\n        \"Common\": {\n            \"class\": \"Tenant\",\n            \"Shared\": {\n                \"class\": \"Application\",\n                \"template\": \"shared\",\n                \"WebServer\": {\n                    \"remark\": \"Test Web Server\",\n                    \"class\": \"iRule\",\n                    \"iRule\": {\n                        \"base64\": \"IyBpUnVsZTogICBBU0NJSSByZXNwb25zZSBmb3IgaW5jb21pbmcgSFRUUCByZXF1ZXN0cwojIFZlcnNpb246IDAuMDIgKFNTTCkKIyBEYXRlOiAgICAyMDE1LTAzLTI0CndoZW4gQ0xJRU5UX0FDQ0VQVEVEIHsKIyBnZW5lcmFsIGRlZmluaXRpb25zIChsaW5lIGJyZWFrLCBzZXJ2ZXIgaGVhZGVyLCBrZWVwLWFsaXZlIGJlaGF2aW9yKQogICAgc2V0IGxpbmVfYnJlYWsgIlxyXG4iCiAgICBzZXQgc2VydmVyX25hbWUgIkxCLU5FVCBWUyIKICAgIHNldCBjb25uX2tlZXBhbGl2ZSAiQ2xvc2UiCiAgICBzZXQgY29udGVudF90eXBlICJ0ZXh0L3BsYWluOyBjaGFyc2V0PXVzLWFzY2lpIgogICAgc2V0IGNvbHVtbl93aWR0aCAwCiMgcmVzcG9uc2UgcGFnZSBkZWZpbml0aW9uIHZpYSBpUnVsZSBjb21tYW5kcwogICAgc2V0IHBhZ2VfY2xpZW50c3NsIHsKICAgICAgICB7W1NTTDo6Y2lwaGVyIG5hbWVdfQogICAgICAgIHtbU1NMOjpjaXBoZXIgYml0c119CiAgICAgICAge1tTU0w6OmNpcGhlciB2ZXJzaW9uXX0KICAgICAgICB7W1NTTDo6c2Vzc2lvbnRpY2tldF19CiAgICAgICAge1tTU0w6OnNlc3Npb25pZF19CiAgICAgICAge1tTU0w6OmV4dGVuc2lvbnMgY291bnRdfQogICAgfQogICAgc2V0IHBhZ2VfY2xpZW50Y2VydCB7CiAgICAgICAge1tTU0w6OmNlcnQgY291bnRdfQogICAgICAgIHtbWDUwOTo6c3ViamVjdCBbU1NMOjpjZXJ0IDBdXX0KICAgICAgICB7W2ZpbmRzdHIgW1g1MDk6OnN1YmplY3QgW1NTTDo6Y2VydCAwXV0gIkNOPSIgMyAiLCJdfQogICAgICAgIHtbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dfQogICAgICAgIHtbZmluZHN0ciBbWDUwOTo6aXNzdWVyIFtTU0w6OmNlcnQgMF1dICJDTj0iIDMgIiwiXX0KICAgICAgICB7W1NTTDo6dmVyaWZ5X3Jlc3VsdF19CiAgICAgICAge1tYNTA5Ojp2ZXJpZnlfY2VydF9lcnJvcl9zdHJpbmcgW1NTTDo6dmVyaWZ5X3Jlc3VsdF1dfQogICAgfQogICAgc2V0IHBhZ2VfZ2xvYmFsIHsKICAgICAgICB7W3ZpcnR1YWwgbmFtZV19CiAgICAgICAge1tJUDo6bG9jYWxfYWRkcl06W1RDUDo6bG9jYWxfcG9ydF19CiAgICAgICAge1tJUDo6cmVtb3RlX2FkZHJdOltUQ1A6OnJlbW90ZV9wb3J0XX0KICAgICAgICB7W3doZXJlaXMgW0lQOjpyZW1vdGVfYWRkcl1dfQogICAgICAgIHtbSFRUUDo6aGVhZGVyIFgtRm9yd2FyZGVkLUZvcl19CiAgICAgICAge1t3aGVyZWlzIFtIVFRQOjpoZWFkZXIgWC1Gb3J3YXJkZWQtRm9yXV19CiAgICAgICAge1tIVFRQOjpoZWFkZXIgVXNlci1BZ2VudF19CiAgICAgICAge1tIVFRQOjp2ZXJzaW9uXX0KICAgICAgICB7W0hUVFA6Om1ldGhvZF19CiAgICAgICAge1tzdHJpbmcgdG9sb3dlciBbSFRUUDo6aG9zdF1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnVyaV1dfQogICAgICAgIHtbc3RyaW5nIHRvbG93ZXIgW0hUVFA6OnBhdGhdXX0KICAgICAgICB7W3N0cmluZyB0b2xvd2VyIFtIVFRQOjpxdWVyeV1dfQogICAgfQogICAgZm9yZWFjaCBsaW5lX2VsZW1lbnQgW2NvbmNhdCAkcGFnZV9jbGllbnRzc2wgJHBhZ2VfY2xpZW50Y2VydCAkcGFnZV9nbG9iYWxdIHsKICAgICAgICBpZiB7W3N0cmluZyBsZW5ndGggJGxpbmVfZWxlbWVudF0gPiAkY29sdW1uX3dpZHRoIH0gewogICAgICAgICAgICBzZXQgY29sdW1uX3dpZHRoIFtzdHJpbmcgbGVuZ3RoICRsaW5lX2VsZW1lbnRdCiAgICAgICAgfQogICAgfQp9CndoZW4gQ0xJRU5UU1NMX0NMSUVOVENFUlQgewojIGZsYWcgY2xpZW50IGNlcnRpZmljYXRlIHByb3ZpZGVkCiAgICBzZXQgZmxhZ19jbGllbnRjZXJ0IDEKfQp3aGVuIEhUVFBfUkVRVUVTVCB7CiMgZXZhbHVhdGUgY29tbWFuZHMgZnJvbSBsaXN0IGFuZCBidWlsZCByZXNwb25zZSBwYWdlCiAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCBbY29uY2F0ICRwYWdlX2dsb2JhbCAkcGFnZV9jbGllbnRzc2xdIHsKICAgICAgICBpZiB7W2NhdGNoIHsgZXZhbCAic2V0IGV2YWx1YXRpb24gJGxpbmVfZWxlbWVudCIgfV19IHsKICAgICAgICAgICAgbG9nIGxvY2FsMC4gIkVycm9yIGRldGVjdGVkIGZvciBjb21tYW5kIDwkbGluZV9lbGVtZW50PiIKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgJHtsaW5lX2VsZW1lbnR9ICR7ZXZhbHVhdGlvbn1dJHtsaW5lX2JyZWFrfSIKICAgICAgICB9CiAgICB9CiMgY29uZGl0aW9uYWxseSBhZGQgY2xpZW50IGNlcnRpZmljYXRlIGluZm9ybWF0aW9uCiAgICBpZiB7W2luZm8gZXhpc3RzIGZsYWdfY2xpZW50Y2VydF19IHsKICAgICAgICBmb3JlYWNoIGxpbmVfZWxlbWVudCAkcGFnZV9jbGllbnRjZXJ0IHsKICAgICAgICAgICAgaWYge1tjYXRjaCB7IGV2YWwgInNldCBldmFsdWF0aW9uICRsaW5lX2VsZW1lbnQiIH1dfSB7CiAgICAgICAgICAgICAgICBsb2cgbG9jYWwwLiAiRXJyb3IgZGV0ZWN0ZWQgZm9yIGNvbW1hbmQgPCRsaW5lX2VsZW1lbnQ+IgogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICR7bGluZV9lbGVtZW50fSAke2V2YWx1YXRpb259XSR7bGluZV9icmVha30iCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiMgYXBwZW5kIHJhbmRvbSBudW1iZXIsIGRhdGUsIHRpbWUgYW5kIHRtbSBpbmZvCiAgICBhcHBlbmQgcGFnZV9hc2NpaSAiW2Zvcm1hdCAiJS0ke2NvbHVtbl93aWR0aH1zICUtcyIgIlJhbmRvbSBOdW1iZXIiIFtmb3JtYXQgJTA0ZCBbZXhwciBpbnQocmFuZCgpKjFlNCldXV0ke2xpbmVfYnJlYWt9IgogICAgYXBwZW5kIHBhZ2VfYXNjaWkgIltmb3JtYXQgIiUtJHtjb2x1bW5fd2lkdGh9cyAlLXMiICJEYXRlIC0gVGltZSIgW2Nsb2NrIGZvcm1hdCBbY2xvY2sgc2Vjb25kc10gLWZvcm1hdCB7JUEgJUIsJWQgJVkgLSAlSDolTTolUyAoJVopfV1dJHtsaW5lX2JyZWFrfSIKICAgIGFwcGVuZCBwYWdlX2FzY2lpICJbZm9ybWF0ICIlLSR7Y29sdW1uX3dpZHRofXMgJS1zIiAiVE1NIEJsYWRlL051bWJlci9Db3VudCIgIltUTU06OmNtcF9ncm91cF0vW1RNTTo6Y21wX3VuaXRdL1tUTU06OmNtcF9jb3VudF0iXSR7bGluZV9icmVha30iCiMgcmV0dXJuIHJlc3BvbnNlIHBhZ2UKICAgIEhUVFA6OnJlc3BvbmQgMjAwIGNvbnRlbnQgJHtwYWdlX2FzY2lpfSBub3NlcnZlciBTZXJ2ZXIgJHtzZXJ2ZXJfbmFtZX0gQ29ubmVjdGlvbiAke2Nvbm5fa2VlcGFsaXZlfSBDb250ZW50LVR5cGUgJGNvbnRlbnRfdHlwZQp9Cg==\"\n                    }\n                }\n            }\n        },\n        \"Tenant_Acme_3\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_1\": {\n                \"class\": \"Application\",\n                \"template\": \"generic\",\n                \"customSSLProfile\": {\n                    \"class\": \"TLS_Server\",\n                    \"certificates\": [\n                        {\n                            \"certificate\": \"customCert\"\n                        }\n                    ]\n                },\n                \"customCert\": {\n                    \"class\": \"Certificate\",\n                    \"certificate\": {\n                        \"bigip\": \"/Common/certificate.crt\"\n                    },\n                    \"privateKey\": {\n                        \"bigip\": \"/Common/private.key\"\n                    }\n                },\n                \"acme_https_vs_1\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"iRules\": [\n                        \"/Common/Shared/WebServer\"\n                    ],\n                    \"virtualAddresses\": [\n                        \"10.91.20.103\"\n                    ],\n                    \"serverTLS\": \"customSSLProfile\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
 							]
 						},
 						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
