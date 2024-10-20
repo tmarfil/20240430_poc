@@ -147,7 +147,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"{{ADMIN_USERNAME}}\",\r\n    \"password\": \"{{ADMIN_PASSWORD}}\",\r\n    \"loginProviderName\": \"tmos\",\r\n    \"timeout\": 28800\r\n}"
+							"raw": "{\r\n    \"username\": \"{{ADMIN_USERNAME}}\",\r\n    \"password\": \"{{ADMIN_PASSWORD}}\",\r\n    \"loginProviderName\": \"tmos\"\r\n}"
 						},
 						"url": {
 							"raw": "https://{{BIGIP1}}/mgmt/shared/authn/login",
@@ -210,6 +210,108 @@
 								"shared",
 								"authn",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: BIGIP1 extend X-F5-Auth-Token timeout",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"timeout\" : 28800\r\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/authz/tokens/{{BIGIP1-X-F5-Auth-Token}}",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{BIGIP1-X-F5-Auth-Token}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: BIGIP2 extend X-F5-Auth-Token timeout",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ADMIN_PASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ADMIN_USERNAME}}",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"timeout\" : 28800\r\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP2}}/mgmt/shared/authz/tokens/{{BIGIP2-X-F5-Auth-Token}}",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"authz",
+								"tokens",
+								"{{BIGIP2-X-F5-Auth-Token}}"
 							]
 						}
 					},
@@ -716,7 +818,89 @@
 					"response": []
 				},
 				{
-					"name": "Step 9: Create Virtual Server from FAST template",
+					"name": "Step 9: BIGIP1 Check FAST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/fast/info",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"fast",
+								"info"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step 9: BIGIP2 Check FAST Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP2}}/mgmt/shared/fast/info",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP2}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"fast",
+								"info"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step 10: Create Virtual Server from FAST template",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -837,12 +1021,15 @@
 					"response": []
 				},
 				{
-					"name": "Step 10: Get all Virtual Servers (toggle GET and POST to prove idempotency)",
+					"name": "Step 11: Get all Virtual Servers (toggle GET and POST to prove idempotency)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
