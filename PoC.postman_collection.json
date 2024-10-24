@@ -596,7 +596,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",\n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ],\n                            \"adminState\": \"disable\"\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
@@ -616,12 +616,12 @@
 					"response": []
 				},
 				{
-					"name": "Step X: To Do: Enable and disable pool members",
+					"name": "Step X: To Do: PATCH Add pool members",
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "POST",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -634,7 +634,45 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",                \n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+							"raw": "[\n  {\n    \"op\": \"add\",\n    \"path\": \"/Tenant_Acme_2/acme_https_app_2/acme_http_pool/members/0/serverAddresses/-\",\n    \"value\": \"192.0.1.172\"\n  }\n]"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: To Do: PATCH Enable and disable pool members",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"op\": \"add\",\n        \"path\": \"/Tenant_Acme_2/acme_https_app_2/acme_http_pool/members/0/adminState\",\n        \"value\": \"offline\"\n    }\n]"
 						},
 						"url": {
 							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
@@ -1055,6 +1093,128 @@
 								"shared",
 								"appsvcs",
 								"declare"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: GET Settings Endpoint",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/settings",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"settings"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: POST Per Application Deployment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"per-app-declaration\",\n    \"schemaVersion\": \"3.53.0\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"logLevel\": \"debug\",\n        \"trace\": true\n    },\n    \"Application1\": {\n        \"class\": \"Application\",\n        \"service\": {\n            \"class\": \"Service_HTTP\",\n            \"virtualAddresses\": [\n                \"192.0.2.1\"\n            ],\n            \"pool\": \"pool\"\n        },\n        \"pool\": {\n            \"class\": \"Pool\",\n            \"members\": [\n                {\n                    \"servicePort\": 80,\n                    \"serverAddresses\": [\n                        \"192.0.2.10\",\n                        \"192.0.2.20\"\n                    ]\n                }\n            ]\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare/Per_Application_Tenant/applications",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare",
+								"Per_Application_Tenant",
+								"applications"
+							]
+						},
+						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
+					},
+					"response": []
+				},
+				{
+					"name": "Step X: DELETE Per Application Deployment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"per-app-declaration\",\n    \"schemaVersion\": \"3.53.0\",\n    \"controls\": {\n        \"class\": \"Controls\",\n        \"logLevel\": \"debug\",\n        \"trace\": true\n    },\n    \"Application1\": {\n        \"class\": \"Application\",\n        \"service\": {\n            \"class\": \"Service_HTTP\",\n            \"virtualAddresses\": [\n                \"192.0.2.1\"\n            ],\n            \"pool\": \"pool\"\n        },\n        \"pool\": {\n            \"class\": \"Pool\",\n            \"members\": [\n                {\n                    \"servicePort\": 80,\n                    \"serverAddresses\": [\n                        \"192.0.2.10\",\n                        \"192.0.2.20\"\n                    ]\n                }\n            ]\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare/Per_Application_Tenant/applications/Application1",
+							"protocol": "https",
+							"host": [
+								"{{BIGIP1}}"
+							],
+							"path": [
+								"mgmt",
+								"shared",
+								"appsvcs",
+								"declare",
+								"Per_Application_Tenant",
+								"applications",
+								"Application1"
 							]
 						},
 						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
