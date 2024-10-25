@@ -331,7 +331,7 @@
 							},
 							{
 								"key": "X-F5-Auth-Token",
-								"value": "CRSKHLKBLVDGFHOTHHMQ2HOKA6"
+								"value": "{{BIGIP1-X-F5-Auth-Token}}"
 							}
 						],
 						"body": {
@@ -560,7 +560,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare/<Tenant_Name>",
+							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare/Tenant_Acme_1",
 							"protocol": "https",
 							"host": [
 								"{{BIGIP1}}"
@@ -570,7 +570,7 @@
 								"shared",
 								"appsvcs",
 								"declare",
-								"<Tenant_Name>"
+								"Tenant_Acme_1"
 							]
 						},
 						"description": "Works but I have to move the \"No TLSV1.3\" out of the Enabled Options list. How can I make the clientssl-secure the parent profile instead of clientssl?"
@@ -596,7 +596,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",\n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ],\n                            \"adminState\": \"disable\"\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
+							"raw": "{\n    \"class\": \"AS3\",\n    \"action\": \"deploy\",\n    \"persist\": true,\n    \"declaration\": {\n        \"class\": \"ADC\",\n        \"schemaVersion\": \"3.53.0\",\n        \"id\": \"123abc\",\n        \"label\": \"HTTPS Example\",\n        \"remark\": \"HTTPS with test pool member nodes\",\n        \"Tenant_Acme_2\": {\n            \"class\": \"Tenant\",\n            \"acme_https_app_2\": {\n                \"class\": \"Application\",\n                \"acme_https_vs_2\": {\n                    \"class\": \"Service_HTTPS\",\n                    \"virtualAddresses\": [\n                        \"10.91.20.102\"\n                    ],\n                    \"pool\": \"acme_http_pool\",\n                    \"serverTLS\": {\n                        \"bigip\": \"/Common/clientssl\"\n                    }\n                },\n                \"acme_http_pool\": {\n                    \"class\": \"Pool\",\n                    \"loadBalancingMode\": \"round-robin\",\n                    \"monitors\": [\n                        \"http\"\n                    ],\n                    \"members\": [\n                        {\n                            \"servicePort\": 8080,\n                            \"shareNodes\": true,\n                            \"serverAddresses\": [\n                                \"10.192.10.201\",\n                                \"10.192.10.202\"\n                            ],\n                            \"adminState\": \"enable\"\n                        }\n                    ]\n                }\n            }\n        }\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{BIGIP1}}/mgmt/shared/appsvcs/declare",
@@ -616,7 +616,7 @@
 					"response": []
 				},
 				{
-					"name": "Step X: To Do: PATCH Add pool members",
+					"name": "OPTIONAL: PATCH Add pool members",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -654,7 +654,7 @@
 					"response": []
 				},
 				{
-					"name": "Step X: To Do: PATCH Enable and disable pool members",
+					"name": "OPTIONAL: PATCH Enable and disable pool members",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -897,7 +897,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 9: BIGIP2 Check FAST Copy",
+					"name": "Step 10: BIGIP2 Check FAST",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -938,7 +938,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 10: Create Virtual Server from FAST template",
+					"name": "Step 11: Create Virtual Server from FAST template",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1059,7 +1059,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 11: Get all Virtual Servers (toggle GET and POST to prove idempotency)",
+					"name": "Step 12: Get all Virtual Servers (toggle GET and POST to prove idempotency)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1100,7 +1100,7 @@
 					"response": []
 				},
 				{
-					"name": "Step X: GET Settings Endpoint",
+					"name": "Step 13: GET Settings Endpoint",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1141,7 +1141,7 @@
 					"response": []
 				},
 				{
-					"name": "Step X: POST Per Application Deployment",
+					"name": "Step 14: POST Per Application Deployment",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1181,7 +1181,7 @@
 					"response": []
 				},
 				{
-					"name": "Step X: DELETE Per Application Deployment",
+					"name": "Step 15: DELETE Per Application Deployment",
 					"request": {
 						"auth": {
 							"type": "noauth"
