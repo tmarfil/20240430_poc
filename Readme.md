@@ -24,6 +24,7 @@ The hostnames of our two example BIG-IP tenants are:
 Create host records on each BIG-IP and provision extra management memory.
 
 ```bash
+tmsh modify sys db ui.advisory.enabled value false
 tmsh modify sys global-settings remote-host add { r10900-1-tenant-1.local {hostname r10900-1-tenant-1.local addr 10.10.10.10}}
 tmsh modify sys global-settings remote-host add { r10900-2-tenant-1.local {hostname r10900-2-tenant-1.local addr 10.10.10.20}}
 tmsh modify sys db provision.extramb value 2048
